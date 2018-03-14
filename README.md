@@ -18,3 +18,5 @@
 - [Phalcon快速开发框架](https://github.com/limingxinleo/biz-phalcon)
 - [Phalcon基础开发框架](https://github.com/limingxinleo/basic-phalcon)
 
+### 安装
+SCWS扩展安装，具体详见 [scws](https://github.com/limingxinleo/note/blob/master/tools/scws/scws.install.sh)
