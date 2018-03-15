@@ -20,3 +20,6 @@
 
 ### 安装
 SCWS扩展安装，具体详见 [scws](https://github.com/limingxinleo/note/blob/master/tools/scws/scws.install.sh)
+
+### 示例
+1. 通过经纬度计算省市区 `php run ml:geo@main`
