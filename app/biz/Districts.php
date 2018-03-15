@@ -10,6 +10,7 @@ namespace App\Biz;
 
 use App\Biz\Repository\Dstricts;
 use App\Common\Clients\TencentMapClient;
+use App\Models\DistrictTrain;
 use Xin\Traits\Common\InstanceTrait;
 
 class Districts
@@ -24,15 +25,37 @@ class Districts
     public function crawl($id = 0)
     {
         $res = Dstricts::getInstance()->findByLevelAndId(3, $id);
+        $rid = 0;
         /** @var \App\Models\Districts $item */
         foreach ($res as $item) {
+            $rid = $item->oid;
             $children = $item->children;
             /** @var \App\Models\Districts $child */
             foreach ($children as $child) {
                 $res = TencentMapClient::getInstance()->suggestion($item->area_name, $child->area_name);
-                dd($res);
+                if (!isset($res['data'])) {
+                    dd($res);
+                }
+                foreach ($res['data'] as $v) {
+                    $lat = $v['location']['lat'];
+                    $lon = $v['location']['lng'];
+
+                    try {
+                        $train = new DistrictTrain();
+                        $train->lat = $lat;
+                        $train->lon = $lon;
+                        $train->oid = $child->oid;
+                        $train->save();
+
+                    } catch (\Exception $ex) {
+
+                    }
+                }
+
+                sleep(1);
             }
         }
-        return 1;
+
+        return $rid;
     }
 }

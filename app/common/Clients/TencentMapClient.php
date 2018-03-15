@@ -28,8 +28,12 @@ class TencentMapClient
 
     public function suggestion($city, $keyword)
     {
+        $city = urlencode($city);
+        $keyword = urlencode($keyword);
+
         $api = 'suggestion/?region=' . $city . '&keyword=' . $keyword . '&key=' . $this->key;
 
-        return $this->client->get($api);
+        $res = $this->client->get($api)->getBody()->getContents();
+        return json_decode($res, true);
     }
 }

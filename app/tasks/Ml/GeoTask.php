@@ -24,7 +24,15 @@ class GeoTask extends Task
 
     public function crawlAction()
     {
-        Districts::getInstance()->crawl();
+        $id = 0;
+        while (true) {
+            $id = Districts::getInstance()->crawl($id);
+            if ($id == 0) {
+                break;
+            }
+
+            echo Color::colorize('当前处理到 ID=' . $id, Color::FG_LIGHT_RED) . PHP_EOL;
+        }
     }
 
 }
