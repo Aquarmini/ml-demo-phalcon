@@ -23,4 +23,17 @@ class DistrictTrain
             'limit' => $limit
         ]);
     }
+
+    public function add($lat, $lon, $oid)
+    {
+        $model = new DistrictTrainModel();
+        $model->lon = $lon;
+        $model->lat = $lat;
+        $model->oid = $oid;
+        try {
+            return $model->save();
+        } catch (\Exception $ex) {
+
+        }
+    }
 }

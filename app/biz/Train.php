@@ -18,7 +18,10 @@ class Train
 {
     use InstanceTrait;
 
-    public function train()
+    /** @var KNearestNeighbors */
+    public $classifier;
+
+    public function __construct()
     {
         $classifier = new KNearestNeighbors();
         $id = 0;
@@ -39,9 +42,13 @@ class Train
             }
 
             $classifier->train($trans, $result);
-            // echo Color::colorize($id, Color::FG_LIGHT_RED) . PHP_EOL;
         }
 
-        return $classifier;
+        $this->classifier = $classifier;
+    }
+
+    public function __call($name, $arguments)
+    {
+        return $this->classifier->$name(...$arguments);
     }
 }

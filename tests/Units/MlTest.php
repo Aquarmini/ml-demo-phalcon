@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 namespace Tests\Units;
 
+use App\Common\Clients\Rpc\BasicClient;
 use Tests\UnitTestCase;
 use Phpml\Classification\KNearestNeighbors;
 
@@ -25,5 +26,12 @@ class MlTest extends UnitTestCase
         $classifier->train($samples, $labels);
 
         $this->assertEquals('b', $classifier->predict([3, 2]));
+    }
+
+    public function testGeoCase()
+    {
+        $this->assertEquals(1829, BasicClient::getInstance()->predict(36.161827, 120.497833));
+        $this->assertEquals(3142, BasicClient::getInstance()->predict(39.9223757639, 116.4221191406));
+        $this->assertEquals(3141, BasicClient::getInstance()->predict(39.9181628466, 116.3726806641));
     }
 }

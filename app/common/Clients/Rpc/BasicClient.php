@@ -13,10 +13,13 @@ use Xin\Swoole\Rpc\Client\Client;
 /**
  * Class BasicClient
  * @package App\Common\Clients\Rpc
- * @method version
+ * @method version()
+ * @method predict($lat, $lon)
  */
 class BasicClient extends Client
 {
+    const TIMEOUT = 1;
+
     public function __construct()
     {
         $service = 'test';

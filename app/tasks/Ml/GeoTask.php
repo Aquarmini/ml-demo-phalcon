@@ -7,9 +7,12 @@ use App\Biz\Train;
 use App\Tasks\Task;
 use Phpml\Classification\KNearestNeighbors;
 use Xin\Cli\Color;
+use Xin\Phalcon\Cli\Traits\Input;
 
 class GeoTask extends Task
 {
+    use Input;
+
     public function mainAction()
     {
         echo Color::head('Help:') . PHP_EOL;
@@ -20,15 +23,16 @@ class GeoTask extends Task
 
         echo Color::head('Actions:') . PHP_EOL;
         echo Color::colorize('  main        菜单', Color::FG_LIGHT_GREEN) . PHP_EOL;
-        echo Color::colorize('  crawl       爬取数据', Color::FG_LIGHT_GREEN) . PHP_EOL;
+        echo Color::colorize('  crawl       添加训练数据', Color::FG_LIGHT_GREEN) . PHP_EOL;
         echo Color::colorize('  train       训练', Color::FG_LIGHT_GREEN) . PHP_EOL;
     }
 
     public function crawlAction()
     {
-        $id = 0;
+        $id = $this->argument('id', 0);
         while (true) {
-            $id = Districts::getInstance()->crawl($id);
+            // $id = Districts::getInstance()->crawl($id);
+            $id = Districts::getInstance()->init($id);
             if ($id == 0) {
                 break;
             }
@@ -39,11 +43,7 @@ class GeoTask extends Task
 
     public function trainAction()
     {
-        $classifier = Train::getInstance()->train();
-
-        // $time = microtime(true);
-        echo $classifier->predict([39.8970943726,116.2037658691]);
-        // echo microtime(true) - $time;
+        echo Train::getInstance()->predict([39.9223757639, 116.4221191406]);
     }
 
 }

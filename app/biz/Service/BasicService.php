@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 namespace App\Biz\Service;
 
+use App\Biz\Train;
 use Xin\Swoole\Rpc\Handler\HanderInterface;
 use Xin\Traits\Common\InstanceTrait;
 
@@ -18,5 +19,14 @@ class BasicService implements HanderInterface
     public function version()
     {
         return di('config')->version;
+    }
+
+    /**
+     * @desc   计算经纬度所在地区
+     * @author limx
+     */
+    public function predict($lat, $lon)
+    {
+        return Train::getInstance()->predict([$lat, $lon]);
     }
 }

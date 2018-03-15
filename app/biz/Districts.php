@@ -9,6 +9,7 @@
 namespace App\Biz;
 
 use App\Biz\Repository\Dstricts;
+use App\Biz\Repository\DistrictTrain as DistrictsTrainRepository;
 use App\Common\Clients\TencentMapClient;
 use App\Models\DistrictTrain;
 use Xin\Traits\Common\InstanceTrait;
@@ -53,6 +54,32 @@ class Districts
                 }
 
                 sleep(1);
+            }
+        }
+
+        return $rid;
+    }
+
+    /**
+     * @desc   初始化训练数据
+     * @author limx
+     */
+    public function init($id = 0)
+    {
+        $res = Dstricts::getInstance()->findByLevelAndId(3, $id);
+        $rid = 0;
+        /** @var \App\Models\Districts $item */
+        foreach ($res as $item) {
+            $rid = $item->oid;
+            $children = $item->children;
+            /** @var \App\Models\Districts $child */
+            foreach ($children as $child) {
+                DistrictsTrainRepository::getInstance()->add($child->lat, $child->lon, $child->oid);
+                if (isset($child->children)) {
+                    foreach ($child->children as $v) {
+                        DistrictsTrainRepository::getInstance()->add($v->lat, $v->lon, $child->oid);
+                    }
+                }
             }
         }
 
