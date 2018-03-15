@@ -3,6 +3,7 @@
 namespace App\Tasks\Server;
 
 use App\Biz\Service\BasicService;
+use App\Biz\Train;
 use App\Common\Logger\Rpc\LoggerHandler;
 use App\Tasks\Task;
 use Xin\Phalcon\Cli\Traits\Input;
@@ -20,6 +21,9 @@ class ServiceTask extends Task
         $daemonize = $this->option('daemonize', $rpc->daemonize);
         $host = $this->option('host', $rpc->host);
         $port = $this->option('port', $rpc->port);
+
+        // 开启服务时，读取样本学习
+        $classifier = Train::getInstance()->classifier;
 
         $server->setHandler('test', BasicService::getInstance());
         $server->setLoggerHandler(LoggerHandler::getInstance());
