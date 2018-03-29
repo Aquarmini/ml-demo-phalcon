@@ -17,9 +17,20 @@
 - [Thrift GO服务版本](https://github.com/limingxinleo/thrift-go-phalcon-project)
 - [Phalcon快速开发框架](https://github.com/limingxinleo/biz-phalcon)
 - [Phalcon基础开发框架](https://github.com/limingxinleo/basic-phalcon)
+- [Zipkin开发版本](https://github.com/limingxinleo/zipkin-phalcon)
+- [Eureka开发版本](https://github.com/limingxinleo/eureka-phalcon)
+
+### 测试以及其他DEMO
+- [框架测试](https://github.com/limingxinleo/phalcon-unit-test)
+- [多库单表](https://github.com/limingxinleo/service-demo-order)
+- [Elasticsearch](https://github.com/Aquarmini/elasticsearch-demo-phalcon)
+- [kafka](https://github.com/Aquarmini/kafka-demo-phalcon)
+- [机器学习](https://github.com/Aquarmini/ml-demo-phalcon)
+- [正则匹配](https://github.com/Aquarmini/regex-demo-phalcon)
 
 ### 安装
 SCWS扩展安装，具体详见 [scws](https://github.com/limingxinleo/note/blob/master/tools/scws/scws.install.sh)
 
 ### 示例
 1. 通过经纬度计算省市区 `php run ml:geo@main`
+
