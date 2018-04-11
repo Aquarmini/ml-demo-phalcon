@@ -28,11 +28,11 @@ class Image
     {
         $builder = new CaptchaBuilder();
         if (!isset($num)) {
-            $num = rand(1000, 9999);
+            $num = rand(0, 9);
         }
         $builder->setPhrase($num);
         $builder->setIgnoreAllEffects(true);
-        $image = $builder->build(100, 25);
+        $image = $builder->build(25, 25);
 
         $file = ROOT_PATH . '/storage/cache/images/' . $num . '.png';
         $image->save($file);
@@ -40,18 +40,14 @@ class Image
         $editor = Grafika::createEditor();
         $image = GdImage::createFromFile($file);
         $editor->flatten($image);
-        $lables = str_split($num);
-        $samples = [];
+        $sample = [];
         for ($y = 0; $y < $image->getHeight(); $y++) {
             for ($x = 0; $x < $image->getWidth(); $x++) {
-                if ($x > 20 && $x < 80) {
-                    $i = $x - 20;
-                    $rgb = imagecolorat($image->getCore(), $x, $y);
-                    $samples[intval($i / 15)][] = $rgb > 8000000 ? 1 : 0;
-                }
+                $rgb = imagecolorat($image->getCore(), $x, $y);
+                $sample[] = $rgb > 8000000 ? 1 : 0;
             }
         }
 
-        return [$samples, $lables];
+        return [$sample, $num];
     }
 }

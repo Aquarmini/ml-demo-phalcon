@@ -56,7 +56,7 @@ before_script:
   # 启动PHP
   - cd $TRAVIS_BUILD_DIR
   - php run server:service --daemonize
-  - sleep 10
+  - sleep 120
 
 script:
   - cd $TRAVIS_BUILD_DIR

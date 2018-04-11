@@ -20,12 +20,7 @@ class SupportVectorTest extends UnitTestCase
 {
     public function testBaseCase()
     {
-        list($samples, $labels) = Image::getInstance()->rand(8888);
-        foreach ($samples as $sample) {
-            $res = BasicClient::getInstance()->predictImageNumber($sample);
-            // $this->assertEquals(8, BasicClient::getInstance()->predictImageNumber($sample));
-        }
-
-        $this->assertTrue(true);
+        list($samples, $labels) = Image::getInstance()->rand(8);
+        $this->assertEquals($labels, BasicClient::getInstance()->predictImageNumber($samples));
     }
 }

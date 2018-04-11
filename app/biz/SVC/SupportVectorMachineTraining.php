@@ -22,10 +22,9 @@ class SupportVectorMachineTraining
     public function __construct()
     {
         $classifier = new SVC(Kernel::LINEAR, $cost = 1000);
-        for ($i = 0; $i < 100; $i++) {
-            list($samples, $lables) = Image::getInstance()->rand();
-            // dd($samples, $lables);
-            $classifier->train($samples, $lables);
+        for ($i = 0; $i < 500; $i++) {
+            list($sample, $lable) = Image::getInstance()->rand();
+            $classifier->train([$sample], [$lable]);
         }
 
         $this->classifier = $classifier;
