@@ -32,7 +32,7 @@ class Image
         }
         $builder->setPhrase($num);
         $builder->setIgnoreAllEffects(true);
-        $image = $builder->build();
+        $image = $builder->build(100, 25);
 
         $file = ROOT_PATH . '/storage/cache/images/' . $num . '.png';
         $image->save($file);
@@ -44,10 +44,10 @@ class Image
         $samples = [];
         for ($y = 0; $y < $image->getHeight(); $y++) {
             for ($x = 0; $x < $image->getWidth(); $x++) {
-                if ($x > 20 && $x < 120) {
+                if ($x > 20 && $x < 80) {
                     $i = $x - 20;
                     $rgb = imagecolorat($image->getCore(), $x, $y);
-                    $samples[intval($i / 25)][] = $rgb > 8000000 ? 1 : 0;
+                    $samples[intval($i / 15)][] = $rgb > 8000000 ? 1 : 0;
                 }
             }
         }

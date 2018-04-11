@@ -25,7 +25,7 @@ class ServiceTask extends Task
 
         // 开启服务时，读取样本学习
         $SNN = KNearestNeighborsTraining::getInstance();
-        // $SVM = SupportVectorMachineTraining::getInstance();
+        $SVM = SupportVectorMachineTraining::getInstance();
 
         $server->setHandler('test', BasicService::getInstance());
         $server->setLoggerHandler(LoggerHandler::getInstance());
