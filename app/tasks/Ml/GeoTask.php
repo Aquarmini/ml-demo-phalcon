@@ -3,7 +3,7 @@
 namespace App\Tasks\Ml;
 
 use App\Biz\Districts;
-use App\Biz\Train;
+use App\Biz\KNearestNeighborsTraining;
 use App\Tasks\Task;
 use Phpml\Classification\KNearestNeighbors;
 use Xin\Cli\Color;
@@ -43,7 +43,7 @@ class GeoTask extends Task
 
     public function trainAction()
     {
-        echo Train::getInstance()->predict([39.9223757639, 116.4221191406]);
+        echo KNearestNeighborsTraining::getInstance()->predict([39.9223757639, 116.4221191406]);
     }
 
 }

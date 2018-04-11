@@ -13,9 +13,10 @@ use Tests\UnitTestCase;
 use Phpml\Classification\KNearestNeighbors;
 
 /**
+ * K临近算法
  * Class UnitTest
  */
-class MlTest extends UnitTestCase
+class KNearestNeighborsTest extends UnitTestCase
 {
     public function testBaseCase()
     {

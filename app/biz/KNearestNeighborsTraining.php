@@ -14,7 +14,7 @@ use Phpml\Classification\KNearestNeighbors;
 use Xin\Cli\Color;
 use Xin\Traits\Common\InstanceTrait;
 
-class Train
+class KNearestNeighborsTraining
 {
     use InstanceTrait;
 

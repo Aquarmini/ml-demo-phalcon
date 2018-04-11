@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 namespace App\Biz\Service;
 
-use App\Biz\Train;
+use App\Biz\KNearestNeighborsTraining;
 use Xin\Swoole\Rpc\Handler\HanderInterface;
 use Xin\Traits\Common\InstanceTrait;
 
@@ -27,6 +27,6 @@ class BasicService implements HanderInterface
      */
     public function predict($lat, $lon)
     {
-        return Train::getInstance()->predict([$lat, $lon]);
+        return KNearestNeighborsTraining::getInstance()->predict([$lat, $lon]);
     }
 }
