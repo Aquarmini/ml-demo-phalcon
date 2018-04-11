@@ -6,7 +6,7 @@
 // +----------------------------------------------------------------------
 // | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
-namespace App\Biz;
+namespace App\Biz\KNN;
 
 use App\Biz\Repository\Dstricts;
 use App\Biz\Repository\DistrictTrain as DistrictsTrainRepository;

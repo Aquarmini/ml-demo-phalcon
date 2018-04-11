@@ -7,7 +7,7 @@
 // | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 
-namespace App\Biz;
+namespace App\Biz\KNN;
 
 use App\Biz\Repository\DistrictTrain;
 use Phpml\Classification\KNearestNeighbors;

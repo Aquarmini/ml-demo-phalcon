@@ -1,32 +1,21 @@
 <?php
 // +----------------------------------------------------------------------
-// | BasicService.php [ WE CAN DO IT JUST THINK IT ]
+// | SupportVectorTraining.php [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
 // | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
-namespace App\Biz\Service;
+namespace App\Biz\SVC;
 
-use App\Biz\KNN\KNearestNeighborsTraining;
-use Xin\Swoole\Rpc\Handler\HanderInterface;
 use Xin\Traits\Common\InstanceTrait;
 
-class BasicService implements HanderInterface
+class SupportVectorTraining
 {
     use InstanceTrait;
 
-    public function version()
+    public function __construct()
     {
-        return di('config')->version;
-    }
 
-    /**
-     * @desc   计算经纬度所在地区
-     * @author limx
-     */
-    public function predict($lat, $lon)
-    {
-        return KNearestNeighborsTraining::getInstance()->predict([$lat, $lon]);
     }
 }

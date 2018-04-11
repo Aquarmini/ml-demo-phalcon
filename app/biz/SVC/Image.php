@@ -1,32 +1,30 @@
 <?php
 // +----------------------------------------------------------------------
-// | BasicService.php [ WE CAN DO IT JUST THINK IT ]
+// | Image.php [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
 // | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
-namespace App\Biz\Service;
+namespace App\Biz\SVC;
 
-use App\Biz\KNN\KNearestNeighborsTraining;
-use Xin\Swoole\Rpc\Handler\HanderInterface;
+use Gregwar\Captcha\CaptchaBuilder;
 use Xin\Traits\Common\InstanceTrait;
 
-class BasicService implements HanderInterface
+class Image
 {
     use InstanceTrait;
 
-    public function version()
+    public function rand()
     {
-        return di('config')->version;
-    }
+        $builder = new CaptchaBuilder();
+        $num = rand(1000, 9999);
+        $builder->setPhrase($num);
+        $image = $builder->build();
 
-    /**
-     * @desc   计算经纬度所在地区
-     * @author limx
-     */
-    public function predict($lat, $lon)
-    {
-        return KNearestNeighborsTraining::getInstance()->predict([$lat, $lon]);
+        $file = ROOT_PATH . '/storage/cache/images/' . $num . '.png';
+        $image->save($file);
+
+        return [$num, $file];
     }
 }

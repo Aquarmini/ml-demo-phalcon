@@ -3,7 +3,7 @@
 namespace App\Tasks\Server;
 
 use App\Biz\Service\BasicService;
-use App\Biz\KNearestNeighborsTraining;
+use App\Biz\KNN\KNearestNeighborsTraining;
 use App\Common\Logger\Rpc\LoggerHandler;
 use App\Tasks\Task;
 use Xin\Phalcon\Cli\Traits\Input;

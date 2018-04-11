@@ -2,8 +2,8 @@
 
 namespace App\Tasks\Ml;
 
-use App\Biz\Districts;
-use App\Biz\KNearestNeighborsTraining;
+use App\Biz\KNN\Districts;
+use App\Biz\KNN\KNearestNeighborsTraining;
 use App\Tasks\Task;
 use Phpml\Classification\KNearestNeighbors;
 use Xin\Cli\Color;
