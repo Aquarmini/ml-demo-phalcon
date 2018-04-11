@@ -11,7 +11,6 @@ namespace Tests\Units;
 use App\Biz\SVC\Image;
 use App\Common\Clients\Rpc\BasicClient;
 use Tests\UnitTestCase;
-use Phpml\Classification\KNearestNeighbors;
 
 /**
  * K临近算法
@@ -21,7 +20,7 @@ class SupportVectorTest extends UnitTestCase
 {
     public function testBaseCase()
     {
-        $res = Image::getInstance()->rand();
-        dd($res);
+        list($samples, $labels) = Image::getInstance()->rand(1111);
+        $this->assertEquals($labels, BasicClient::getInstance()->predictImageNumber($samples));
     }
 }

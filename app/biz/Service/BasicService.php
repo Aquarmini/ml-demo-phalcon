@@ -9,6 +9,7 @@
 namespace App\Biz\Service;
 
 use App\Biz\KNN\KNearestNeighborsTraining;
+use App\Biz\SVC\SupportVectorMachineTraining;
 use Xin\Swoole\Rpc\Handler\HanderInterface;
 use Xin\Traits\Common\InstanceTrait;
 
@@ -28,5 +29,16 @@ class BasicService implements HanderInterface
     public function predict($lat, $lon)
     {
         return KNearestNeighborsTraining::getInstance()->predict([$lat, $lon]);
+    }
+
+    /**
+     * @desc   计算图片验证码
+     * @author limx
+     * @param $samples
+     * @return mixed
+     */
+    public function predictImageNumber($samples)
+    {
+        return SupportVectorMachineTraining::getInstance()->predict($samples);
     }
 }

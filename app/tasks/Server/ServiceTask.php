@@ -4,6 +4,7 @@ namespace App\Tasks\Server;
 
 use App\Biz\Service\BasicService;
 use App\Biz\KNN\KNearestNeighborsTraining;
+use App\Biz\SVC\SupportVectorMachineTraining;
 use App\Common\Logger\Rpc\LoggerHandler;
 use App\Tasks\Task;
 use Xin\Phalcon\Cli\Traits\Input;
@@ -23,7 +24,8 @@ class ServiceTask extends Task
         $port = $this->option('port', $rpc->port);
 
         // 开启服务时，读取样本学习
-        $classifier = KNearestNeighborsTraining::getInstance()->classifier;
+        $SNN = KNearestNeighborsTraining::getInstance();
+        $SVM = SupportVectorMachineTraining::getInstance();
 
         $server->setHandler('test', BasicService::getInstance());
         $server->setLoggerHandler(LoggerHandler::getInstance());
