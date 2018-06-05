@@ -22,12 +22,12 @@ class ServiceTask extends Task
         $daemonize = $this->option('daemonize', $rpc->daemonize);
         $host = $this->option('host', $rpc->host);
         $port = $this->option('port', $rpc->port);
-
+        
         // 开启服务时，读取样本学习
         $SNN = KNearestNeighborsTraining::getInstance();
         $SVM = SupportVectorMachineTraining::getInstance();
 
-        $server->setHandler('test', BasicService::getInstance());
+        $server->setHandler('test', BasicService::class);
         $server->setLoggerHandler(LoggerHandler::getInstance());
         $server->serve($host, $port, [
             'pid_file' => $pid,

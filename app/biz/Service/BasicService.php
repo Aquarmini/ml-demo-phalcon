@@ -11,9 +11,10 @@ namespace App\Biz\Service;
 use App\Biz\KNN\KNearestNeighborsTraining;
 use App\Biz\SVC\SupportVectorMachineTraining;
 use Xin\Swoole\Rpc\Handler\HanderInterface;
+use Xin\Swoole\Rpc\Handler\Handler;
 use Xin\Traits\Common\InstanceTrait;
 
-class BasicService implements HanderInterface
+class BasicService extends Handler
 {
     use InstanceTrait;
 
