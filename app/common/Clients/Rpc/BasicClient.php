@@ -16,6 +16,7 @@ use Xin\Swoole\Rpc\Client\Client;
  * @method version()
  * @method predict($lat, $lon)
  * @method predictImageNumber($samples)
+ * @method predictSVM($lat, $lon)
  */
 class BasicClient extends Client
 {

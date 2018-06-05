@@ -9,6 +9,7 @@
 namespace App\Biz\Service;
 
 use App\Biz\KNN\KNearestNeighborsTraining;
+use App\Biz\SVC\ImageSVM;
 use App\Biz\SVC\SupportVectorMachineTraining;
 use Xin\Swoole\Rpc\Handler\HanderInterface;
 use Xin\Swoole\Rpc\Handler\Handler;
@@ -40,6 +41,15 @@ class BasicService extends Handler
      */
     public function predictImageNumber($samples)
     {
-        return SupportVectorMachineTraining::getInstance()->predict($samples);
+        return ImageSVM::getInstance()->predict($samples);
+    }
+
+    /**
+     * @desc   计算经纬度所在地区
+     * @author limx
+     */
+    public function predictSVM($lat, $lon)
+    {
+        return SupportVectorMachineTraining::getInstance()->predict([$lat, $lon]);
     }
 }
